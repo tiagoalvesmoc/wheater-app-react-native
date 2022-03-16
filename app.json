@@ -5,7 +5,12 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+        "splash": {
+  "image": "./src/img/splash.png",
+  "backgroundColor": "#8174CF",
+  "resizeMode": "contain"
+}
   },
   "name": "wheather-app"
 }

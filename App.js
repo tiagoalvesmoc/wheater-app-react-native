@@ -1,21 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import Routes from "./src/routes";
+import PreLoader from "./src/Pages/PreLoader";
+import AppLoading from "expo-app-loading";
+
+import {
+  useFonts,
+  Rajdhani_300Light,
+  Rajdhani_400Regular,
+  Rajdhani_500Medium,
+  Rajdhani_600SemiBold,
+  Rajdhani_700Bold,
+} from "@expo-google-fonts/rajdhani";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  console.disableYellowBox = true;
+  let [fontsLoaded] = useFonts({
+    Rajdhani_300Light,
+    Rajdhani_400Regular,
+    Rajdhani_500Medium,
+    Rajdhani_600SemiBold,
+    Rajdhani_700Bold,
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  if (!fontsLoaded) {
+    return <PreLoader />;
+  } else {
+    return <Routes />;
+  }
+}
