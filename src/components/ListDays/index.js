@@ -1,31 +1,40 @@
 import React from "react";
-import color from "../../config/Colors";
 
-import { Container, Text, Box } from "./styles";
+import { Container, Content, Text, Image, Spacer } from "./styles";
 
 export default function ListDays({ response }) {
   return (
-    <Container>
-      <Box direction="row">
-        <Box>
-          <Box direction="row">
-            <Text color={color.white}>
-              {response?.date + " || " + response.city}
-            </Text>
-          </Box>
-          <Box>
-            <Text color={color.white} weight="bold">
-              {response.description}
-            </Text>
-          </Box>
-        </Box>
-        <Box align="center" justify="center">
-          <Text color={color.white} weight="bold">
-            {response.min}°C ~ {response.max}°C
+    <Container activeOpacity={0.8}>
+      <Content flx={2}>
+        <Content>
+          <Text size="18px">
+            {response.city} {response.forecast[0].date}{" "}
+            {response.forecast[0].weekday}
           </Text>
-          <Text>{response.max}</Text>
-        </Box>
-      </Box>
+
+          <Text size="18px" numberOfLines={1} weight="bold">
+            {response.description}
+          </Text>
+        </Content>
+        <Spacer size="10px" />
+        <Content direction="row">
+          <Image
+            source={require(`../../assets/icons/wind.png`)}
+            width="30px"
+            height="30px"
+          />
+
+          <Text weight="bold" size="18px">
+            {response.wind_speedy}{" "}
+          </Text>
+        </Content>
+      </Content>
+
+      <Content>
+        <Text>
+          {response.forecast[0].min}°C ~ {response.forecast[0].max}°C
+        </Text>
+      </Content>
     </Container>
   );
 }

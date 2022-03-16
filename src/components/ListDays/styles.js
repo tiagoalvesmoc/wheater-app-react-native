@@ -1,28 +1,42 @@
 import styled from "styled-components";
 import color from "../../config/Colors";
 
-export const Container = styled.SafeAreaView`
-  margin: 3px;
-  width: 90%;
-  height: 80px;
-  padding: 10px;
-
-  background-color: ${color.primary};
-  border-radius: 10px;
+export const Spacer = styled.View`
+  height: ${(props) => props.size || "10px"};
 `;
 
-export const Box = styled.View`
-  flex: 1;
+export const Container = styled.TouchableOpacity`
+  align-items: center;
+  flex-direction: row;
+  background-color: ${color.primary};
+  width: 90%;
+  height: 100px;
+  border-radius: 10px;
+  z-index: 4;
+  justify-content: space-between;
+  margin: 2px;
+`;
+
+export const Content = styled.View`
+  flex: ${(props) => props.flx || 1};
   flex-direction: ${(props) => props.direction || "column"};
-  align-items: ${(props) => props.align || "flex-start"};
-  justify-content: ${(props) => props.justify || "flex-start"}; ;
+
+  margin-top: 10px;
+  align-items: ${(props) => props.align || "center"};
+
+  padding-left: ${(props) => props.pad || "1px"};
 `;
 
 export const Text = styled.Text`
   font-family: "Rajdhani_400Regular";
-  font-size: ${(props) => props.size || "18px"};
-  margin: 2px;
-  color: ${(props) => props.color || "#000"};
+  font-size: ${(props) => props.size || "20px"};
   font-weight: ${(props) => props.weight || "normal"};
-  text-align: center;
+  color: ${color.white};
+  margin: 2px;
+  padding-left: 5px;
+`;
+
+export const Image = styled.Image`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
 `;

@@ -47,7 +47,7 @@ export default function Home() {
 
       await axios
         .get(
-          `https://api.hgbrasil.com/weather?key=509b5f3c&lat=${location?.latitude}&lon=${location?.longitude}&user_ip=""`
+          `https://api.hgbrasil.com/weather?key=${process.env.API_KEY}&lat=${location?.latitude}&lon=${location?.longitude}&user_ip=""`
         )
         .then(async (res) => {
           await setResponse(res.data.results);
@@ -96,8 +96,23 @@ export default function Home() {
           <Animatable.View animation="fadeInDownBig">
             <Box response={response} />
           </Animatable.View>
-          <Animatable.View animation="fadeInUpBig">
-            <Box response={response} />
+
+          <Spacer size="30px" />
+
+          <Animatable.View animation="bounceIn">
+            <ListDays response={response} />
+          </Animatable.View>
+          <Animatable.View animation="bounceInDown">
+            <ListDays response={response} />
+          </Animatable.View>
+          <Animatable.View animation="bounceInUp">
+            <ListDays response={response} />
+          </Animatable.View>
+          <Animatable.View animation="bounceInLeft">
+            <ListDays response={response} />
+          </Animatable.View>
+          <Animatable.View animation="bounceInRight">
+            <ListDays response={response} />
           </Animatable.View>
         </Container>
       )}
